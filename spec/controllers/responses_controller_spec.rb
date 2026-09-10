@@ -20,7 +20,6 @@ RSpec.describe ResponsesController, type: :controller do
     allow(controller).to receive(:current_user).and_return(user)
 
     # Stub role helpers used by ResponsesController
-    allow(controller).to receive(:has_role?).and_return(true)
     allow(controller).to receive(:action_allowed?).and_return(true)
   end
 
@@ -180,7 +179,7 @@ RSpec.describe ResponsesController, type: :controller do
         expect(response_double).to receive(:update) do |attrs|
           expect(attrs.to_h).to eq(
             'additional_comment' => 'Draft note',
-            'scores_attributes' => [{ 'id' => '7', 'item_id' => '3', 'answer' => 5, 'comments' => 'well supported' }]
+            'scores_attributes' => [{ 'id' => '7', 'item_id' => '3', 'answer' => '5', 'comments' => 'well supported' }]
           )
         end.and_return(true)
 
@@ -356,7 +355,6 @@ RSpec.describe ResponsesController, type: :controller do
 
     before do
       allow(controller).to receive(:set_response) { controller.instance_variable_set(:@response, response_double) }
-      allow(controller).to receive(:has_role?).and_return(true)
       allow(response_double).to receive(:rubric_label).and_return('Response')
     end
 
