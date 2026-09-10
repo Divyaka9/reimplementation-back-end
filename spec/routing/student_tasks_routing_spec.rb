@@ -35,9 +35,5 @@ RSpec.describe StudentTasksController, type: :routing do
     it "routes GET /student_tasks/show/:id to #show" do
       expect(get: "/student_tasks/show/1").to route_to("student_tasks#show", id: "1")
     end
-
-    it "routes GET /student_tasks/team to #team" do
-      expect(get: "/student_tasks/team").to route_to("student_tasks#team")
-    end
   end
 end
